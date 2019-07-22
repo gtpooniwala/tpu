@@ -18,10 +18,14 @@ This is an example evaluation script for users to understand the EfficientNet
 model checkpoints on CPU. To serve EfficientNet, please consider to export a
 `SavedModel` from checkpoints and use tf-serving to serve.
 """
-
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
+
+print("Starting evaluation of test image with default ckpt file\n")
+
+
+
 
 import json
 import sys
@@ -33,7 +37,6 @@ import tensorflow as tf
 
 import efficientnet_builder
 import preprocessing
-
 
 flags.DEFINE_string('model_name', 'efficientnet-b0', 'Model name to eval.')
 flags.DEFINE_string('runmode', 'examples', 'Running mode: examples or imagenet')

@@ -18,6 +18,8 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
+# print('Entered training code')
+
 import os
 import time
 from absl import app
@@ -33,6 +35,7 @@ from tensorflow.contrib.training.python.training import evaluation
 from tensorflow.core.protobuf import rewriter_config_pb2
 from tensorflow.python.estimator import estimator
 
+# print("Reached line 38")
 
 FLAGS = flags.FLAGS
 
@@ -243,6 +246,7 @@ flags.DEFINE_bool(
 MEAN_RGB = [0.485 * 255, 0.456 * 255, 0.406 * 255]
 STDDEV_RGB = [0.229 * 255, 0.224 * 255, 0.225 * 255]
 
+# print("Reached line 248")
 
 def model_fn(features, labels, mode, params):
   """The model_fn to be used with TPUEstimator.
@@ -564,7 +568,7 @@ def export(est, export_dir, input_image_size=None):
 
 
 def main(unused_argv):
-
+  # print("Started main function\n")
   input_image_size = FLAGS.input_image_size
   if not input_image_size:
     if FLAGS.model_name.startswith('efficientnet'):
@@ -724,7 +728,8 @@ def main(unused_argv):
       if FLAGS.export_dir:
         export(est, FLAGS.export_dir, input_image_size)
 
-
+# print("Reached line 729")
 if __name__ == '__main__':
+  print("Entered __name__\n")
   tf.logging.set_verbosity(tf.logging.INFO)
   app.run(main)
